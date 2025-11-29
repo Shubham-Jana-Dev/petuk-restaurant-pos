@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petuk Biriyani Billing App</title>
+    
+    <link rel="icon" type="image/png" href="assets/resturant_logo.png"> 
+    
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <div class="brand">
+            <img src="assets/resturant_logo.png" class="restaurant-logo" alt="Petuk Biriyani Logo">
+            <div>
+                <h1>Petuk Biriyani & Restaurant</h1>
+                <p class="tag" style="margin-top: 5px;">
+                    Fresh • Fast • Friendly<br>
+                    petukbiriyani2024@gmail.com • +91 9733579705 • +91 8617054124<br>
+                    Jalchak • Pingla • Paschim Medinipur
+                </p>
+            </div>
+        </div>
+        <div class="actions">
+            <button id="darkModeToggle" class="btn secondary">🌙 Dark Mode</button>
+            <p id="date" style="font-size:1.1em; font-weight: 600; margin-top: 10px; text-align: right;"></p>
+        </div>
+    </div>
+
+    <div class="main-content-split">
+        <div class="left-sidebar">
+            <div class="history-tabs">
+                <button id="tabCurrent" class="tab-btn active">বর্তমান বিল</button>
+                <button id="tabHistory" class="tab-btn">বিলিং ইতিহাস</button>
+                <button id="tabReport" class="tab-btn">বিক্রির রিপোর্ট</button>
+            </div>
+
+            <div id="quickAddMenu" class="quick-add-scroll active-area">
+                <p>Loading items...</p>
+            </div>
+
+            <div id="protectedContent" class="hidden-area">
+                
+                <div id="passwordPrompt" class="password-prompt active-area">
+                    <h2>দেখতে পাসওয়ার্ড দিন</h2>
+                    <div class="password-input-group">
+                        <input type="password" id="passwordInput" placeholder="Enter password" autocomplete="off">
+                        <button id="passwordSubmitBtn" class="btn primary">Enter</button>
+                    </div>
+                    <p id="passwordErrorMsg"></p>
+                    <p style="font-size: 0.85em; color: var(--secondary-color);">This step is required for security. Password is <code>************</code></p>
+                </div>
+
+                <div id="billingHistory" class="history-list-scroll hidden-area">
+                    <ul id="historyList">
+                        </ul>
+                </div>
+
+                <div id="salesReportArea" class="hidden-area">
+                    </div>
+            </div>
+        </div>
+
+        <div class="right-bill-area">
+            
+            <form id="addForm" class="add-form">
+                <input type="text" id="itemName" placeholder="Item Name" required list="items-list">
+                <input type="number" id="itemQty" value="1" min="1" placeholder="Quantity" required>
+                <input type="number" id="itemPrice" step="0.01" min="0" placeholder="Price (Rs.)" required>
+                <button type="submit" class="btn primary">Add</button>
+            </form>
+
+            <div class="bill-table-wrapper">
+                <table class="bill-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 40%;">Item</th>
+                            <th style="width: 15%; text-align: center;">Qty</th>
+                            <th style="width: 20%; text-align: right;">Unit Price</th>
+                            <th style="width: 20%; text-align: right;">Amount</th>
+                            <th style="width: 5%;">Remove</th>
+                        </tr>
+                    </thead>
+                    <tbody id="billBody">
+                        </tbody>
+                </table>
+            </div>
+            
+            <table class="bill-table-footer-static">
+                <tfoot>
+                    <tr>
+                        <td id="totalTextLabel" style="width: 75%; text-align: right;"></td>
+                        <td id="totalAmount" style="width: 25%; text-align: right;">Rs. 0.00</td>
+                        <td></td>
+                    </tr>
+                </tfoot>
+            </table>
+
+            <div class="add-form payment-row" style="margin-top: 20px;">
+                <select id="paymentSelect" class="add-form input" style="flex-grow: 1;">
+                    <option value="UPI">UPI / PhonePe / Google Pay</option>
+                    <option value="Cash">Cash</option>
+                    <option value="Card">Card Payment</option>
+                    <option value="Credit">Credit/Due</option>
+                </select>
+                <button id="clearBtn" class="btn secondary">Save & Clear</button>
+                <button id="printBtn" class="btn primary">Print & Save</button>
+            </div>
+        </div>
+    </div>
+    
+    <div id="printContainer" class="print-only print-text-receipt">
+        </div>
+    <p id="printPayment" class="print-only receipt-footer"></p>
+    
+    <footer class="w-full py-4 bg-gray-200 dark:bg-gray-800 border-t border-gray-300 dark:border-gray-700">
+        <div class="max-w-screen-md mx-auto text-center text-gray-600 dark:text-gray-400">
+            <p class="text-sm">
+                Petuk Biriyani & Restaurant billing platform developed by <strong>Shubham Jana</strong>
+            </p>
+            <p class="text-xs mt-1">
+                contact : 
+                <a href="mailto:devshubhamjana@gmail.com" class="text-indigo-600 dark:text-indigo-400 hover:underline">
+                    devshubhamjana@gmail.com
+                </a>
+            </p>
+        </div>
+    </footer>
+    
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
